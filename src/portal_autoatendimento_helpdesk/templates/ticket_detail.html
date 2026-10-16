@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Ticket #{{ ticket.id }}{% endblock %}
+{% block content %}
+  <h2>Ticket #{{ ticket.id }}</h2>
+  <table>
+    <tr><th>Tipo</th><td>{{ ticket.tipo }}</td></tr>
+    <tr><th>Descrição</th><td>{{ ticket.descricao }}</td></tr>
+    <tr><th>Status</th><td><span class="badge {{ ticket.status }}">{{ ticket.status }}</span></td></tr>
+    <tr><th>Criado em</th><td>{{ ticket.criado_em }}</td></tr>
+  </table>
+  <p class="back"><a href="{{ url_for('helpdesk.listar_tickets_route') }}">&larr; Voltar à lista</a></p>
+{% endblock %}
