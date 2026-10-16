@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Abrir ticket{% endblock %}
+{% block content %}
+  <h2>Abrir novo ticket</h2>
+  <form method="post" action="{{ url_for('helpdesk.novo_ticket') }}">
+    <label for="tipo">Tipo
+      <select name="tipo" id="tipo" required>
+        <option value="senha">Senha</option>
+        <option value="software">Solicitação de software</option>
+      </select>
+    </label>
+    <label for="descricao">Descrição
+      <textarea name="descricao" id="descricao" placeholder="Descreva o problema ou o software necessário" required></textarea>
+    </label>
+    <button type="submit">Abrir ticket</button>
+  </form>
+{% endblock %}
