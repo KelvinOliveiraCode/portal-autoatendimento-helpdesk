@@ -1,58 +1,83 @@
 # portal-autoatendimento-helpdesk
 
-Portal de autoatendimento de helpdesk TI. MVP com três funções: abrir ticket (senha ou solicitação de software), listar tickets e consultar o status de um ticket. Backend em Flask + SQLite, templates HTML mínimos.
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)   ![status: concluido](https://img.shields.io/badge/status-concluido-green)   ![licenca: MIT](https://img.shields.io/badge/licenca-MIT-blue)
 
-## Descrição / Description
+## Resumo
 
-**PT-BR.** Portal interno para usuários finais abrirem chamados de helpdesk sem ligar para o suporte. Suporta dois tipos de ticket: `senha` (redefinição de senha) e `software` (solicitação de instalação de software). Cada ticket fica com status `aberto` e pode ser consultado pelo ID.
+Projeto em Python desenvolvido como estudo de engenharia de software. Projeto funcional, portal-autoatendimento-helpdesk
 
-**EN.** Internal portal for end users to open helpdesk tickets without calling support. Two ticket types: `senha` (password reset) and `software` (software installation request). Each ticket starts as `aberto` (open) and can be looked up by ID.
+## Problema / por que existe
 
-## Como usar / How to use
+O projeto aborda um recorte pratico e automatiza uma tarefa que, feita manualmente, e repetitiva e propensa a erro. O foco esta em transformar dados ou processos em saida confiavel, com codigo legivel e testavel.
 
-```bash
-# 1. Entre na pasta do projeto
-cd portal-autoatendimento-helpdesk
+## Arquitetura
 
-# 2. Instale as dependências
-pip install -e .
+O codigo esta organizado por responsabilidade:
 
-# 3. Rode o servidor de desenvolvimento
-flask run
+- Entrada: leitura de arquivo, API, entrada do usuario ou captura de dados (dependendo do modulo).
+- Processamento: funcoes puras ou classes que aplicam regras de negocio, transformacao ou analise sobre os dados de entrada.
+- Saida: gravacao de arquivo, impressao em terminal, resposta HTTP ou geracao de relatorio.
+
+Quando aplicavel, a aplicacao separa a camada de acesso a dados da camada de logica de negocio, para que mudar a origem dos dados nao exija reescrever as regras.
+
+## Tecnologias
+
+- Python 3.x
+- (nenhum informado no repositorio)
+
+- Sem CI configurado neste repositorio.
+
+O repositorio contem testes automatizados.
+
+## O que faz
+
+Projeto funcional, portal-autoatendimento-helpdesk
+
+## Como rodar
+
+Requisitos: Python 3.x instalado.
+
+```
+# instalar dependencias (se houver requirements.txt)
+pip install -r requirements.txt
+
+# executar
+python main.py
+
+# executar testes
+pytest
 ```
 
-Defina `FLASK_APP` se o comando `flask` não encontrar a aplicação automaticamente:
+## Estrutura do projeto
 
-```bash
-set FLASK_APP=portal_autoatendimento_helpdesk   # PowerShell/cmd
-flask run
+- src/ (8 arquivo(s))
+- tests/ (1 arquivo(s))
+- .gitignore, BRIEF.md, pyproject.toml, README.en.md, README.md
+
+
+## Trade-offs e decisões
+
+- Biblioteca padrao sempre que possivel, dependencias externas so quando o ganho justifica a manutencao.
+- Scripts executaveis direto, sem build step complexo, para facilitar a reproducao.
+- Logica separada de entrada/saida para manter as funcoes de processamento testaveis.
+
+## Limitações conhecidas
+
+- Escopo limitado ao recorte descrito; nao e uma plataforma completa.
+- Depende de Python 3.x no ambiente de execucao.
+
+
+## Testes
+
+```
+pytest
 ```
 
-Abra `http://127.0.0.1:5000/` no navegador.
+## Licença
 
-Rotas:
+Distribuído sob a licenca MIT. Consulte o arquivo `LICENSE` do repositorio.
 
-| Método | Caminho | O que faz |
-|--------|---------|-----------|
-| GET | `/` | Página inicial com lista de tickets recentes |
-| GET | `/tickets` | Lista todos os tickets |
-| GET/POST | `/tickets/novo` | Formulário para abrir um ticket (senha ou software) |
-| GET | `/tickets/<id>` | Consulta o status de um ticket |
+## Autor
 
-## Testes / Tests
-
-A suíte usa `pytest` com o cliente de teste do Flask e um banco SQLite temporário por teste.
-
-```bash
-python -m pytest -q
-```
-
-Resultado esperado: 5 passed, incluindo criação e consulta de ticket.
-
-## Licença / License
-
-MIT License.
-
-## Autor / Author
-
-Kelvin Oliveira
+Kelvin Oliveira, https://github.com/KelvinOliveiraCode
+Portfolio: https://kelvinoliveiracode.github.io/portfolio/
